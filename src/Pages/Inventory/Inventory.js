@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Items = () => {
+const Inventory = () => {
     return (
         <div>
-            <p>6 sliced Items</p>
+            <h2>This page for dynamic Id</h2>
             <Link to="/manageitems">
      <button type="button">
           Manage Inventories
@@ -14,4 +14,4 @@ const Items = () => {
     );
 };
 
-export default Items;
+export default Inventory;
