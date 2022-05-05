@@ -3,9 +3,10 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <div>
-            <h3>This is footer</h3>
-        </div>
+        <footer className='container-fluid content'>
+            <h6>Carventory</h6>
+            <p><small>Copyright &copy; {new Date().getFullYear()}</small></p>
+    </footer>
     );
 };
 

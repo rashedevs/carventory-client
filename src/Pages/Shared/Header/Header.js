@@ -18,6 +18,7 @@ const Header = () => {
       <CustomLink to='/manage'>Manage Items</CustomLink>
       <CustomLink to='/add'>Add Item</CustomLink>
       <CustomLink to='/blogs'>Blogs</CustomLink>
+      <CustomLink eventkey={2} as={Link} to="/login">Login</CustomLink>
     </Nav>
   </Navbar.Collapse>
   </Container>
