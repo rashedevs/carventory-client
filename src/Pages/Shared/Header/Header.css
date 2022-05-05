@@ -1,9 +1,11 @@
-.nav-items {
-    font-size: 16px;
-    font-weight: 600;
+.navbar a {
+    margin: 0 17px;
+    font-size: 17px;
+    font-weight: 500;
     color: #FFFF !important;
+    text-decoration: none;
 }
 
 .nav-items a:hover {
-    font-weight: 700;
+    color: aqua !important;
 }
