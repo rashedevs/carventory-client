@@ -9,7 +9,7 @@ const Register = () => {
                 <h2 className='text-danger my-5 text-center'>Please Register</h2>
                 <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control name='email' type="email" placeholder="Enter email" required />
+                    <Form.Control name='email' type="email" placeholder="Enter Email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -17,7 +17,7 @@ const Register = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formConfirmPassword">
-                    <Form.Control name='confirmpass'  type="password" placeholder="Confirm Password" required />
+                    <Form.Control name='confirmPassword'  type="password" placeholder="Confirm Password" required />
                 </Form.Group>
                 <Button variant="danger" type="submit" className='d-block mx-auto w-50 my-3 fw-bold'>
                     Register
