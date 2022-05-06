@@ -14,10 +14,10 @@ const GoogleLogin = () => {
             navigate('/home')
         }
     })
-    let errorContainer;
     if (loading) {
         return <Loading></Loading>
     }
+    let errorContainer;
     if (error) {
         errorContainer = <p className='text-danger'>Error: {error?.message}</p>
     }
