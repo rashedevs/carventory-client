@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Register.css';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Register = () => {
     const navigate = useNavigate()
@@ -67,6 +68,7 @@ const Register = () => {
             </Form>
             {errorContainer}
             <p>Already have an account? <Link to='/login' className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
+            <GoogleLogin></GoogleLogin>
             <ToastContainer/>
             </div>
         </div>

@@ -7,6 +7,7 @@ import './Login.css';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -55,8 +56,9 @@ const Login = () => {
         await signInWithEmailAndPassword(email,password)
         event.target.reset()
     }
+    // style={{ height: "100vh" }}
     return (
-        <div className='container w-50 mx-auto' style={{ height: "100vh" }}>
+        <div className='container w-50 mx-auto'>
             <h2 className='text-primary my-4 text-center'>Please Login</h2>
             <Form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -75,7 +77,8 @@ const Login = () => {
             {errorContainer}
             <p className='mt-3'>New to Carventory? <Link to='/register' className='text-primary pe-auto text-decoration-none ms-1'>Please Register</Link></p>
 
-            <p className='mt-3'>Forgot Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={handleResetPassword}>Reset Password</button></p>
+            <p className='mt-3 ms-3'>Forgot Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={handleResetPassword}>Reset Password</button></p>
+            <GoogleLogin></GoogleLogin>
             <ToastContainer/>
         </div>
     );
