@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
@@ -20,6 +21,7 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            <p className='mt-3'>New to Carventory? <Link to='/register' className='text-primary pe-auto text-decoration-none ms-1'>Please Register</Link></p>
         </div>
     );
 };
