@@ -2,37 +2,52 @@ import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Register.css';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 
 const Register = () => {
     const navigate = useNavigate()
     const [
         createUserWithEmailAndPassword,
-        user
+        user,
+        loading,
+        error
     ] = useCreateUserWithEmailAndPassword(auth)
+
     useEffect(() => {
         if (user) {
             navigate('/home')
         }
     })
+    if (loading) {
+        return <Loading></Loading>
+    }
+    let errorContainer;
+    if (error) {
+        errorContainer = <p className='text-danger'>Error: {error?.message}</p>
+    }
 
     const handleRegisterSubmit=event=>{
         event.preventDefault()
         const email = event.target.email.value
         const password = event.target.password.value
         const confirmPassword=event.target.confirmPassword.value
-        console.log(email,password,confirmPassword)
 
         if (password !== confirmPassword) {
-            alert('Password did not match')
+            toast('Password did not match')
+            event.target.reset()
             return;
         }
         createUserWithEmailAndPassword(email,password)
+        navigate('/home')
         event.target.reset()
     }
     return (
         <div className='container w-50 mx-auto'style={{ height: "100vh" }}>
+            <div>
                 <h2 className='text-danger my-4 text-center'>Please Register</h2>
                 <Form onSubmit={handleRegisterSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -50,7 +65,10 @@ const Register = () => {
                     Register
                 </Button>
             </Form>
+            {errorContainer}
             <p>Already have an account? <Link to='/login' className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
+            <ToastContainer/>
+            </div>
         </div>
     );
 };
