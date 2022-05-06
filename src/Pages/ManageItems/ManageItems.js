@@ -6,10 +6,10 @@ const ManageItems = () => {
         <div>
             <h3>Manage items haha</h3>
             <Link to="/additem">
-     <button type="button">
-          Add New Item
-     </button>
- </Link>
+               <button type="button">
+                   Add New Item
+               </button>
+            </Link>
         </div>
     );
 };
