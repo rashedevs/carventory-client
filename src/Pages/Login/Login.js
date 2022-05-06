@@ -1,14 +1,35 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
-    const handleLoginSubmit = event => {
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+    let errorContainer;
+    if (error) {
+        errorContainer = <p className='text-danger'>Error: {error?.message}</p>
+    }
+
+    const handleLoginSubmit = async(event) => {
         event.preventDefault()
         const email = event.target.email.value
         const password = event.target.password.value
-        console.log(email,password)
+        await signInWithEmailAndPassword(email,password)
         event.target.reset()
     }
     return (
@@ -28,7 +49,9 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            {errorContainer}
             <p className='mt-3'>New to Carventory? <Link to='/register' className='text-primary pe-auto text-decoration-none ms-1'>Please Register</Link></p>
+            <ToastContainer/>
         </div>
     );
 };
