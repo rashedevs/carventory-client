@@ -15,7 +15,7 @@ const Register = () => {
         user,
         loading,
         error
-    ] = useCreateUserWithEmailAndPassword(auth)
+    ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true })
 
     useEffect(() => {
         if (user) {
@@ -30,7 +30,7 @@ const Register = () => {
         errorContainer = <p className='text-danger'>Error: {error?.message}</p>
     }
 
-    const handleRegisterSubmit=event=>{
+    const handleRegisterSubmit=async(event)=>{
         event.preventDefault()
         const email = event.target.email.value
         const password = event.target.password.value
@@ -41,7 +41,7 @@ const Register = () => {
             event.target.reset()
             return;
         }
-        createUserWithEmailAndPassword(email,password)
+        await createUserWithEmailAndPassword(email,password)
         navigate('/home')
         event.target.reset()
     }
