@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ManageItems = () => {
     return (
-        <div>
+        <div className='container' style={{ height: "100vh" }}>
             <h3>Manage items haha</h3>
             <Link to="/additem">
                <button type="button">
