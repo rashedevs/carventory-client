@@ -49,11 +49,11 @@ const Login = () => {
         errorContainer = <p className='text-danger'>Error: {error?.message}</p>
     }
 
-    const handleLoginSubmit = async(event) => {
+    const handleLoginSubmit = event => {
         event.preventDefault()
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        await signInWithEmailAndPassword(email,password)
+         signInWithEmailAndPassword(email,password)
         event.target.reset()
     }
     // style={{ height: "100vh" }}

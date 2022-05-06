@@ -19,9 +19,14 @@ const Header = () => {
     </Nav>
     <Nav className='nav-items'>
       <CustomLink to="/">Home</CustomLink>
-      <CustomLink to="/manageitems">Manage items</CustomLink>
-      <CustomLink to="/additem">Add item</CustomLink>
-      <CustomLink to="/myitems">My items</CustomLink>
+      
+      {
+        user && <>
+        <CustomLink to="/manageitems">Manage items</CustomLink>
+        <CustomLink to="/additem">Add item</CustomLink>
+        <CustomLink to="/myitems">My items</CustomLink>
+        </>
+      }
       <CustomLink to="/blogs">Blogs</CustomLink>
       {
         user ? <button className='logout btn btn-link text-white text-decoration-none' onClick={() => signOut(auth)}>Sign Out</button> : <CustomLink to="/login">Login</CustomLink>

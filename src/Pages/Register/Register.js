@@ -48,7 +48,6 @@ const Register = () => {
     }
     return (
         <div className='container w-50 mx-auto'style={{ height: "100vh" }}>
-            <div>
                 <h2 className='text-danger my-4 text-center'>Please Register</h2>
                 <Form onSubmit={handleRegisterSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -70,7 +69,6 @@ const Register = () => {
             <p>Already have an account? <Link to='/login' className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
             <GoogleLogin></GoogleLogin>
             <ToastContainer/>
-            </div>
         </div>
     );
 };
