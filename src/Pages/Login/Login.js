@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 
 const Login = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
 
     const [
         signInWithEmailAndPassword,
@@ -17,18 +20,38 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    if (loading) {
+    const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(auth);
+    const emailRef = useRef('')
+    const passwordRef = useRef('')
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    })
+    const handleResetPassword = async () => {
+        const email = emailRef.current.value
+        if (email) {
+            await sendPasswordResetEmail(email)
+            toast('Email sent successfully')
+        }
+        else {
+            toast('Please enter your email')
+        }
+    }
+
+    if (loading || sending) {
         return <Loading></Loading>
     }
     let errorContainer;
-    if (error) {
+    if (error || error2) {
         errorContainer = <p className='text-danger'>Error: {error?.message}</p>
     }
 
     const handleLoginSubmit = async(event) => {
         event.preventDefault()
-        const email = event.target.email.value
-        const password = event.target.password.value
+        const email = emailRef.current.value
+        const password = passwordRef.current.value
         await signInWithEmailAndPassword(email,password)
         event.target.reset()
     }
@@ -38,12 +61,12 @@ const Login = () => {
             <Form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
 
-                    <Form.Control  type="email" name="email" placeholder="Enter Email" required />
+                    <Form.Control  type="email" ref={emailRef} placeholder="Enter Email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
 
-                    <Form.Control type="password" name="password" placeholder="Password" required />
+                    <Form.Control type="password" ref={passwordRef} placeholder="Password" required />
                 </Form.Group>
                 <Button variant="primary" className='d-block mx-auto w-50 my-2 fw-bold text-white rounded' type="submit">
                     Login
@@ -51,6 +74,8 @@ const Login = () => {
             </Form>
             {errorContainer}
             <p className='mt-3'>New to Carventory? <Link to='/register' className='text-primary pe-auto text-decoration-none ms-1'>Please Register</Link></p>
+
+            <p className='mt-3'>Forgot Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={handleResetPassword}>Reset Password</button></p>
             <ToastContainer/>
         </div>
     );
