@@ -29,7 +29,7 @@ const AddItem = () => {
         <input
           className="mb-3 ps-2"
           placeholder="Email"
-          {...register("email", { required: true })}
+          {...register("email")}
         />
         <input
           className="mb-3 ps-2"
@@ -60,7 +60,7 @@ const AddItem = () => {
           {...register("price", { required: true })}
         />
         <input
-          className="w-50 py-1 text-white bg-dark mx-auto rounded"
+          className="w-50 py-1 text-white bg-primary border-0 mx-auto rounded"
           type="submit"
           value="Add Item"
         />
