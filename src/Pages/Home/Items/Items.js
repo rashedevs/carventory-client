@@ -19,7 +19,7 @@ const Items = () => {
         ))}
       </div>
       <Link to="/manageitems">
-        <button className="my-3" type="button">
+        <button className="btn-primary my-3" type="button">
           Manage Inventories
         </button>
       </Link>
