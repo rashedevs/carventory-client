@@ -22,14 +22,23 @@ const ManageItems = () => {
   };
   return (
     <div className="container">
-      <h3 className="text-danger mt-4">Manage Inventories</h3>
+      <h3 className="text-danger mt-4">Manage inventories</h3>
       <hr className="w-50 mx-auto text-danger" />
-      <Table bordered hover variant="danger">
+      <Link to="/additem">
+        <button
+          className="btn-primary border-0 rounded mb-4 py-1 px-3"
+          type="button"
+        >
+          Add New Item
+        </button>
+      </Link>
+      <Table bordered hover variant="danger" className="mb-5">
         <thead>
           <tr>
             <th>Image</th>
             <th>Product Name</th>
             <th>Supplier</th>
+            <th>Price</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -47,6 +56,7 @@ const ManageItems = () => {
                 </td>
                 <td>{product?.name}</td>
                 <td>{product?.supplier}</td>
+                <td>${product?.price}</td>
                 <td>
                   <button
                     onClick={() => handleDelete(product._id)}
@@ -60,14 +70,6 @@ const ManageItems = () => {
           ))}
         </tbody>
       </Table>
-      <Link to="/additem">
-        <button
-          className="btn-primary border-0 rounded my-4 py-1 px-2"
-          type="button"
-        >
-          Add New Item
-        </button>
-      </Link>
     </div>
   );
 };

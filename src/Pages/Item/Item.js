@@ -24,7 +24,7 @@ const Item = ({ product }) => {
         <Card.Body>
           <Card.Link>
             <button
-              className="btn-primary"
+              className="btn-primary rounded border-0"
               onClick={() => navigateToInventory(_id)}
             >
               Stock Update

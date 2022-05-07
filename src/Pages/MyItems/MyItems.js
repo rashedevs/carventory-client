@@ -35,7 +35,7 @@ const MyItems = () => {
   };
   return (
     <div className="my-4">
-      <h3 className="my-2">My items</h3>
+      <h3 className="my-2 text-danger">My items</h3>
       <hr className="w-50 text-danger mx-auto mb-4" />
       <div className=" container items-container">
         {myItems.map((item) => (

@@ -18,8 +18,9 @@ const AddItem = () => {
       });
   };
   return (
-    <div className="container w-50 mx-auto" style={{ height: "100vh" }}>
-      <h3 className="text-danger my-3">Add new item</h3>
+    <div className="container w-50 mx-auto">
+      <h3 className="text-danger mt-4">Add new item</h3>
+      <hr className="w-50 mx-auto text-danger mb-4" />
       <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
         <input
           className="mb-3 ps-2"
@@ -60,7 +61,7 @@ const AddItem = () => {
           {...register("price", { required: true })}
         />
         <input
-          className="w-50 py-1 text-white bg-primary border-0 mx-auto rounded"
+          className="w-50 py-1 mb-5 text-white bg-primary border-0 mx-auto rounded"
           type="submit"
           value="Add Item"
         />
