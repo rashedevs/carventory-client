@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import useProducts from "../../../hooks/useProducts";
 import Item from "../../Item/Item";
 import "./Items.css";
 
 const Items = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/product")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products] = useProducts();
   return (
     <div className="container">
       <h4 className="my-5">Six sliced item</h4>

@@ -54,7 +54,7 @@ const Inventory = () => {
         </Card>
       </div>
       <div className="container w-50 mx-auto my-3">
-        <h4>Restock the item</h4>
+        <h4>Restock item</h4>
         <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
           <input
             className="mb-3 ps-2"

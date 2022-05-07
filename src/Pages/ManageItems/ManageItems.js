@@ -1,18 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useProducts from "../../hooks/useProducts";
 
 const ManageItems = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/product")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products, setProducts] = useProducts();
+
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `http://localhost:5000/product/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const remaining = products.filter((product) => product._id !== id);
+          setProducts(remaining);
+        });
+    }
+  };
   return (
     <div className="container">
-      <h3 className="text-danger my-4">Manage Inventories</h3>
-
+      <h3 className="text-danger mt-4">Manage Inventories</h3>
+      <hr className="w-50 mx-auto text-danger" />
       <Table bordered hover variant="danger">
         <thead>
           <tr>
@@ -25,31 +36,37 @@ const ManageItems = () => {
         <tbody>
           {products.map((product) => (
             <>
-              {
-                <tr key={product?._id}>
-                  <td>
-                    <img
-                      className="rounded"
-                      style={{ height: "60px" }}
-                      src={product?.img}
-                      alt=""
-                    />
-                  </td>
-                  <td>{product?.name}</td>
-                  <td>{product?.supplier}</td>
-                  <td>
-                    <button className="btn-primary border-0 rounded">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              }
+              <tr key={product._id}>
+                <td>
+                  <img
+                    className="rounded"
+                    style={{ height: "60px" }}
+                    src={product?.img}
+                    alt=""
+                  />
+                </td>
+                <td>{product?.name}</td>
+                <td>{product?.supplier}</td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(product._id)}
+                    className="btn-primary border-0 rounded px-2 py-1"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
             </>
           ))}
         </tbody>
       </Table>
       <Link to="/additem">
-        <button type="button">Add New Item</button>
+        <button
+          className="btn-primary border-0 rounded my-4 py-1 px-2"
+          type="button"
+        >
+          Add New Item
+        </button>
       </Link>
     </div>
   );
