@@ -7,9 +7,9 @@ import warehouse3 from "../../images/warehouses/warehouse3.jpg";
 const Warhouses = () => {
   return (
     <div className="mb-5">
-      <h4 className=" text-danger">Our Warehouses</h4>
+      <h4 className=" text-danger">Our warehouses</h4>
       <hr className="w-50 mx-auto text-danger mb-4" />
-      <div className="warehouse container w-75 mx-auto">
+      <div className="warehouse container w-100 mx-auto">
         <div>
           <img
             style={{ height: "200px", width: "350px" }}
