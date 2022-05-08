@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 import "./MyItems.css";
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
   const [myItems, setmyItems] = useState([]);
+
   useEffect(() => {
     const getMyItems = async () => {
       const email = user?.email;
@@ -24,6 +26,9 @@ const MyItems = () => {
     };
     getMyItems();
   }, [user]);
+  if (!myItems.length) {
+    return <Loading></Loading>;
+  }
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
