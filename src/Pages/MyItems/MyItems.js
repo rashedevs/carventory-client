@@ -13,7 +13,12 @@ const MyItems = () => {
       const email = user?.email;
       if (email) {
         const url = `https://ancient-coast-78867.herokuapp.com/items?email=${email}`;
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+
         setmyItems(data);
       }
     };
