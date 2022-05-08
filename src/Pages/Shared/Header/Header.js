@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import CustomLink from "../../CustomLink/CustomLink";
 import "./Header.css";
+import warehouse from "../../../images/warehouse.png.ico";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -19,7 +20,14 @@ const Header = () => {
       className="navbar"
     >
       <Container>
-        <Navbar.Brand as={Link} to="/" style={{ fontSize: "23px" }}>
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          style={{ mouse: "pointer", fontSize: "23px" }}
+        >
+          <span className="mx-2">
+            <img style={{ width: "30px" }} src={warehouse} alt="" />
+          </span>
           Carventory
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
