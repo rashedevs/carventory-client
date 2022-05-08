@@ -13,13 +13,27 @@ const Item = ({ product }) => {
       <Card style={{ height: "31rem" }}>
         <Card.Img variant="top" style={{ height: "180px" }} src={img} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>{description}</Card.Text>
+          <Card.Title className="text-success fw-bold">
+            Name: <small>{name}</small>
+          </Card.Title>
+          <Card.Text>
+            <span className="text-primary fw-bold">Short description: </span>
+            Short description:{" "}
+            {description.length > 50 ? description.slice(0, 50) : description}
+            ...
+          </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Supplier: {supplier}</ListGroupItem>
-          <ListGroupItem>Quantity: {quantity}</ListGroupItem>
-          <ListGroupItem>Price: ${price}</ListGroupItem>
+          <ListGroupItem>
+            <span className="text-primary fw-bold">Supplier:</span> {supplier}
+          </ListGroupItem>
+          <ListGroupItem>
+            {" "}
+            <span className="text-primary fw-bold">Quantity:</span> {quantity}
+          </ListGroupItem>
+          <ListGroupItem>
+            <span className="text-primary fw-bold">Price:</span> ${price}
+          </ListGroupItem>
         </ListGroup>
         <Card.Body>
           <Card.Link>

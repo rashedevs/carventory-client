@@ -59,11 +59,25 @@ const MyItems = () => {
               />
 
               <Card.Body>
-                <Card.Title>Name: {item.name}</Card.Title>
-                <Card.Text>Description: {item.description}</Card.Text>
-                <Card.Text>Supplier: {item.supplier}</Card.Text>
-                <Card.Text>Quantity: {item.quantity}</Card.Text>
-                <Card.Text>Price: ${item.price}</Card.Text>
+                <Card.Title className="text-success fw-bold">
+                  Name: {item.name}
+                </Card.Title>
+                <Card.Text>
+                  <span className="text-primary fw-bolder">Description:</span>{" "}
+                  {item.description}
+                </Card.Text>
+                <Card.Text>
+                  <span className="text-primary fw-bolder">Supplier:</span>{" "}
+                  {item.supplier}
+                </Card.Text>
+                <Card.Text>
+                  <span className="text-primary fw-bolder">Quantity:</span>{" "}
+                  {item.quantity}
+                </Card.Text>
+                <Card.Text>
+                  <span className="text-primary fw-bolder">Price:</span> $
+                  {item.price}
+                </Card.Text>
                 <Button
                   variant="primary"
                   onClick={() => handleDelete(item._id)}
