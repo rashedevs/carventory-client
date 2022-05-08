@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import error from "../../images/error.jpg";
 
 const NotFound = () => {
-    return (
-        <div>
-            <h3>404 Not found</h3>
-        </div>
-    );
+  return (
+    <div>
+      <img style={{ height: "650px", width: "100%" }} src={error} alt="" />
+    </div>
+  );
 };
 
 export default NotFound;

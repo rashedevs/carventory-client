@@ -39,17 +39,17 @@ const ManageItems = () => {
             <th>Product Name</th>
             <th>Supplier</th>
             <th>Price</th>
-            <th>Delete</th>
+            <th>Option</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product) => (
             <>
-              <tr key={product._id}>
+              <tr product={product} key={product._id}>
                 <td>
                   <img
                     className="rounded"
-                    style={{ height: "60px" }}
+                    style={{ height: "60px", width: "70px" }}
                     src={product?.img}
                     alt=""
                   />

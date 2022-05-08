@@ -1,13 +1,15 @@
-import React from 'react';
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
-    return (
-        <footer className='container-fluid content'>
-            <h6>Carventory</h6>
-            <p><small>Copyright &copy; {new Date().getFullYear()}</small></p>
+  return (
+    <footer className="container-fluid content bg-danger">
+      <h6>Carventory</h6>
+      <p>
+        <small>Copyright &copy; {new Date().getFullYear()}</small>
+      </p>
     </footer>
-    );
+  );
 };
 
 export default Footer;
