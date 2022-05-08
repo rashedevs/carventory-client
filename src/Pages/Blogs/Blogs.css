@@ -1,0 +1,13 @@
+.blog-container {
+    padding: 30px;
+    background-color: grey;
+}
+
+.blog {
+    background-color: rgb(59, 100, 100);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 20px;
+    margin: 0px 20px 20px;
+}
