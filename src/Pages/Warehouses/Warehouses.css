@@ -1,0 +1,11 @@
+.warehouse{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+}
+
+@media only screen and (max-width:576px) {
+    .warehouse {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
