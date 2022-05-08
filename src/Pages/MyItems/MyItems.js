@@ -12,7 +12,7 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user?.email;
       if (email) {
-        const url = `http://localhost:5000/items?email=${email}`;
+        const url = `https://ancient-coast-78867.herokuapp.com/items?email=${email}`;
         const { data } = await axios.get(url);
         setmyItems(data);
       }
@@ -22,7 +22,7 @@ const MyItems = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:5000/items/${id}`;
+      const url = `https://ancient-coast-78867.herokuapp.com/items/${id}`;
       fetch(url, {
         method: "DELETE",
       })
