@@ -2,10 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useProducts from "../../../hooks/useProducts";
 import Item from "../../Item/Item";
+import Loading from "../../Loading/Loading";
 import "./Items.css";
 
 const Items = () => {
   const [products] = useProducts();
+  if (!products.length) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="container">
       <h3 className="mt-5 text-danger">Inventory items</h3>
