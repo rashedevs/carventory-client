@@ -14,7 +14,9 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user?.email;
       if (email) {
-        const url = `https://ancient-coast-78867.herokuapp.com/items?email=${email}`;
+        const url = `https://carventory-server.vercel.app/items?email=${email}`;
+        // const url = `http://127.0.0.1:5000/items?email=${email}`;
+        // https://ancient-coast-78867.herokuapp.com/
         const { data } = await axios.get(url, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -32,7 +34,7 @@ const MyItems = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://ancient-coast-78867.herokuapp.com/items/${id}`;
+      const url = `https://carventory-server.vercel.app/items/${id}`;
       fetch(url, {
         method: "DELETE",
       })

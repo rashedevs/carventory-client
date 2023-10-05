@@ -10,7 +10,7 @@ const Inventory = () => {
   const { _id, name, price, description, img, quantity, supplier, email } =
     product;
   useEffect(() => {
-    const url = `https://ancient-coast-78867.herokuapp.com/product/${id}`;
+    const url = `https://carventory-server.vercel.app/product/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -31,7 +31,7 @@ const Inventory = () => {
         supplier,
       };
       //send data to the server
-      const url = `https://ancient-coast-78867.herokuapp.com/product/${id}`;
+      const url = `https://carventory-server.vercel.app/product/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -61,7 +61,7 @@ const Inventory = () => {
       supplier,
     };
     //send to server
-    const url = `https://ancient-coast-78867.herokuapp.com/product/${id}`;
+    const url = `https://carventory-server.vercel.app/product/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

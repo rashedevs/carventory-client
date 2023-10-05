@@ -9,7 +9,7 @@ const ManageItems = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://ancient-coast-78867.herokuapp.com/product/${id}`;
+      const url = `https://carventory-server.vercel.app/product/${id}`;
       fetch(url, {
         method: "DELETE",
       })

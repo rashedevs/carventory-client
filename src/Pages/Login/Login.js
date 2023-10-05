@@ -55,7 +55,7 @@ const Login = () => {
     const password = passwordRef.current.value;
     await signInWithEmailAndPassword(email, password);
     const { data } = await axios.post(
-      "https://ancient-coast-78867.herokuapp.com/login",
+      "https://carventory-server.vercel.app/login",
       { email }
     );
     localStorage.setItem("accessToken", data.accessToken);

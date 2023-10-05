@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 const AddItem = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const url = `https://ancient-coast-78867.herokuapp.com/product`;
+    const url = `https://carventory-server.vercel.app/product`;
     fetch(url, {
       method: "POST",
       headers: {
